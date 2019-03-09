@@ -1,3 +1,6 @@
+*******************
+***** SCRIPTS *****
+
 >> PlayerCamera
 [やること]
 カメラ回転 上下
@@ -29,7 +32,7 @@
 みるからにきたない
 
 
-
+************************
 ***** KEY SETTINGS *****
 □ : button 0 = WireMode
 × : button 1 = Jump
@@ -42,3 +45,16 @@ R1: button 5 = Run
 ↓ : Axis8 positive
 → : Axis7 positive = CameraHorizontal
 ↑ : Axis8 negative
+
+*********************
+***** ANIMATION *****
+Idle : HumanoidIdle(SciFi Robots)
+Walk : HumanoidWalk(SciFi Robots)
+Run : HumanoidRun(SciFi Robots)
+Air : HumanoidFall(SciFi Robots)
+Jump : UMATOBI00(unity-chan!)
+Jump_Idling
+Jump_Running : JUMP00(unity-chan!)
+Attack_Walking :
+Attack_Idling :
+Attack_Running :
