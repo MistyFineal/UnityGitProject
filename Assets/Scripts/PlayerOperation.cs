@@ -81,12 +81,16 @@ public class PlayerOperation : MonoBehaviour
         Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         velocity = moveForward;
+
+        /*** PlayerRotateBaseCameraスクリプトを有効にするときは以下のif文はコメントアウト  byくそざこひなち ***/
+        /*
         if(moveForward != Vector3.zero){
           transform.rotation = Quaternion.LookRotation(moveForward);
         }
+        */
 
         /*** PlayerのanimationStateを決める ***/
-        if(velocity.magnitude > 0.01f){
+        if (velocity.magnitude > 0.01f){
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetButton("Run")){
             moveSpeed = runSpeed;
             jumpPower = JUMP_POWER_RUNNING;
