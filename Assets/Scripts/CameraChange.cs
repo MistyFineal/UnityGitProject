@@ -19,10 +19,10 @@ public class CameraChange : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("WireMode")){
           ChangeActiveCamera();
           if(wireCamera.activeSelf){
-            player.GetComponent<PlayerOperation>().setWireMode(true);
+            player.GetComponent<PlayerOperation>().SetWireMode(true);
             reticleImage.SetActive(true);
           }else{
-            player.GetComponent<PlayerOperation>().setWireMode(false);
+            player.GetComponent<PlayerOperation>().SetWireMode(false);
             reticleImage.SetActive(false);
           }
         }
