@@ -32,7 +32,7 @@ public class GolemMove : MonoBehaviour
     {
         //speed = 0.1f;
         flameCounter = 0;
-        searchLength = 10.0f;
+        searchLength = 20.0f;
         rb = this.GetComponent<Rigidbody>();
         rb.useGravity = true;
         anim = this.GetComponent<Animator>();
