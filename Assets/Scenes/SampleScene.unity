@@ -740,6 +740,7 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -754,7 +755,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &534669904
 Camera:
   m_ObjectHideFlags: 0
@@ -825,6 +826,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 4, z: -4}
   playerTrans: {fileID: 2128676285}
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1399ccb895ff145aea32a9d149520d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 100
 --- !u!1001 &628144526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3285,7 +3299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3.2
   runSpeed: 6.5
-  playerCamera: {fileID: 534669902}
 --- !u!4 &2128676285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400204, guid: a67db89bdee18f241927d32f2379ded1,
@@ -3308,3 +3321,16 @@ MonoBehaviour:
   moveSpeed: 8.5
   testObj: {fileID: 6331324393255085552, guid: 6b326dca33ce7485183bd566f6568526, type: 3}
   reticleImage: {fileID: 1130887615}
+--- !u!114 &2128676287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128676281}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea11ff130a202be49ae35dce7d3c17e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 10
