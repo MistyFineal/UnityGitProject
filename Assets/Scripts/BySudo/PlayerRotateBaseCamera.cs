@@ -20,15 +20,16 @@ public class PlayerRotateBaseCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
+
+        float inputHorizontal = Input.GetAxis("Horizontal");
+        float inputVertical = Input.GetAxis("Vertical");
         //アナログスティックのグラつきを想定して±0.01以下をはじく
-        if (Mathf.Abs(horizontal) + Mathf.Abs(vertical) > 0.01F)
+        if (Mathf.Abs(inputHorizontal) + Mathf.Abs(inputVertical) > 0.01F)
         {
             //カメラからみたプレイヤーの方向ベクトル
             Vector3 camToPlayer = player.position - pc.transform.position;
             // π/2 - atan2(x,y) == atan2(y,x)
-            float inputAngle = Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
+            float inputAngle = Mathf.Atan2(inputHorizontal, inputVertical) * Mathf.Rad2Deg;
             float cameraAngle = Mathf.Atan2(camToPlayer.x, camToPlayer.z) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0, inputAngle + cameraAngle, 0);
             //deltaTimeを用いることで常に一定の速度になる
