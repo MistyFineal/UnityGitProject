@@ -10,9 +10,11 @@ public class PlayerOperation : MonoBehaviour
   private Vector3 velocity;
   [SerializeField] private float walkSpeed = 3.2f;
   [SerializeField] private float runSpeed = 6.5f;
+  private float rotateSpeed = 10.0f;
   private float moveSpeed;
   private float inputHorizontal;
   private float inputVertical;
+  [SerializeField] private GameObject playerCamera;
   // jump
   private const float JUMP_POWER = 6.0f;
   private const float JUMP_POWER_RUNNING = 7.5f;
@@ -83,9 +85,19 @@ public class PlayerOperation : MonoBehaviour
         velocity = moveForward;
 
         /*** PlayerRotateBaseCameraスクリプトを有効にするときは以下のif文はコメントアウト  byくそざこひなち ***/
-        
-        if(moveForward != Vector3.zero){
+        /*if(moveForward != Vector3.zero){
           transform.rotation = Quaternion.LookRotation(moveForward);
+        }*/
+        if (Mathf.Abs(inputHorizontal) + Mathf.Abs(inputVertical) > 0.01F)
+        {
+          //カメラからみたプレイヤーの方向ベクトル
+          Vector3 cameraToPlayer = transform.position - playerCamera.transform.position;
+          // π/2 - atan2(x,y) == atan2(y,x)
+          float inputAngle = Mathf.Atan2(inputHorizontal, inputVertical) * Mathf.Rad2Deg;
+          float cameraAngle = Mathf.Atan2(cameraToPlayer.x, cameraToPlayer.z) * Mathf.Rad2Deg;
+          Quaternion targetRotation = Quaternion.Euler(0, inputAngle + cameraAngle, 0);
+          //deltaTimeを用いることで常に一定の速度になる
+          transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
         }
 
 

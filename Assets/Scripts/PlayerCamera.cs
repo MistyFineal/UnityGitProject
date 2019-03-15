@@ -29,7 +29,7 @@ public class PlayerCamera : MonoBehaviour
     transform.position += player.transform.position - playerPos;
     cameraTrans = this.transform;
     playerPos = player.transform.position;
-    Debug.Log(verticalRotationIndex+"/"+verticalRotation[verticalRotationIndex]+"/"+cameraTrans.eulerAngles.x);
+
     if(Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("CameraHorizontal") < 0){
       cameraTrans.RotateAround(playerPos, Vector3.up, -rotateSpeed * Time.deltaTime);
     }else if(Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("CameraHorizontal") > 0){
