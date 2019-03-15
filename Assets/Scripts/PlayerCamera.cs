@@ -10,8 +10,8 @@ public class PlayerCamera : MonoBehaviour
   private Transform cameraTrans;
   [SerializeField] private Transform playerTrans;
   private Vector3 playerPos;
-  private float[] verticalRotate = {0f, 11.45f, 22.9f, 34.35f}; // (x) default : 22.9
-  private int verticalRotateIndex = 2; // verticalRotate[2] = 22.9f
+  private float[] verticalRotation = {0f, 11.45f, 22.9f, 34.35f}; // (x) default : 22.9
+  private int verticalRotationIndex = 2; // verticalRotation[2] = 22.9f
   private float beforeTrigger;
   private float rotateSpeed = 60f;
 
@@ -29,7 +29,7 @@ public class PlayerCamera : MonoBehaviour
     transform.position += player.transform.position - playerPos;
     cameraTrans = this.transform;
     playerPos = player.transform.position;
-    Debug.Log(verticalRotateIndex+"/"+verticalRotate[verticalRotateIndex]+"/"+cameraTrans.eulerAngles.x);
+    Debug.Log(verticalRotationIndex+"/"+verticalRotation[verticalRotationIndex]+"/"+cameraTrans.eulerAngles.x);
     if(Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("CameraHorizontal") < 0){
       cameraTrans.RotateAround(playerPos, Vector3.up, -rotateSpeed * Time.deltaTime);
     }else if(Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("CameraHorizontal") > 0){
@@ -41,12 +41,12 @@ public class PlayerCamera : MonoBehaviour
 
     // 上下のカメラ回転変化（４段階）
     if(Input.GetKeyDown(KeyCode.UpArrow) || (verticalRotateInput < 0 && beforeTrigger == 0f)){
-      if(verticalRotateIndex < 3){
-        cameraTrans.RotateAround(playerPos, cameraTrans.right, Mathf.Abs(verticalRotate[++verticalRotateIndex] - cameraTrans.eulerAngles.x));
+      if(verticalRotationIndex < 3){
+        cameraTrans.RotateAround(playerPos, cameraTrans.right, Mathf.Abs(verticalRotation[++verticalRotationIndex] - cameraTrans.eulerAngles.x));
       }
     }else if(Input.GetKeyDown(KeyCode.DownArrow) || (verticalRotateInput > 0 && beforeTrigger == 0f)){
-      if(verticalRotateIndex > 0){
-        cameraTrans.RotateAround(playerPos, cameraTrans.right, -Mathf.Abs(verticalRotate[--verticalRotateIndex] - cameraTrans.eulerAngles.x));
+      if(verticalRotationIndex > 0){
+        cameraTrans.RotateAround(playerPos, cameraTrans.right, -Mathf.Abs(verticalRotation[--verticalRotationIndex] - cameraTrans.eulerAngles.x));
       }
     }
     beforeTrigger = verticalRotateInput;
