@@ -10,7 +10,9 @@ public class PlayerCamera : MonoBehaviour
   private Transform cameraTrans;
   [SerializeField] private Transform playerTrans;
   private Vector3 playerPos;
-
+  private float[] verticalRotation = {0f, 11.45f, 22.9f, 34.35f}; // (x) default : 22.9
+  private int verticalRotationIndex = 2; // verticalRotation[2] = 22.9f
+  private float beforeTrigger;
   private float rotateSpeed = 60f;
 
   void Start()
@@ -22,21 +24,31 @@ public class PlayerCamera : MonoBehaviour
 
   void LateUpdate()
   {
-    //cameraTrans.position = playerTrans.position + cameraVec;
+    float verticalRotateInput = Input.GetAxis("CameraVertical");
+
     transform.position += player.transform.position - playerPos;
     cameraTrans = this.transform;
     playerPos = player.transform.position;
+
     if(Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("CameraHorizontal") < 0){
-      transform.RotateAround(player.transform.position, Vector3.up, -rotateSpeed * Time.deltaTime);
+      cameraTrans.RotateAround(playerPos, Vector3.up, -rotateSpeed * Time.deltaTime);
     }else if(Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("CameraHorizontal") > 0){
-      transform.RotateAround(player.transform.position, Vector3.up, +rotateSpeed * Time.deltaTime);
+      cameraTrans.RotateAround(playerPos, Vector3.up, +rotateSpeed * Time.deltaTime);
     }else if(Input.GetButtonDown("ChangeFront")){
       // ここ 角度の正規化してないから、もしかしたら変な挙動するかも
-      transform.RotateAround(player.transform.position, Vector3.up, player.transform.eulerAngles.y - cameraTrans.eulerAngles.y);
-    }/*else if(Input.GetKey(KeyCode.UpArrow)){
-      transform.RotateAround(player.transform.position, Vector3.right, -rotateSpeed * Time.deltaTime);
-    }else if(Input.GetKey(KeyCode.DownArrow)){
-      transform.RotateAround(player.transform.position, Vector3.right, +rotateSpeed * Time.deltaTime);
-    }*/ // 上下のカメラ回転はめんどそう…
+      cameraTrans.RotateAround(playerPos, Vector3.up, player.transform.eulerAngles.y - cameraTrans.eulerAngles.y);
+    }
+
+    // 上下のカメラ回転変化（４段階）
+    if(Input.GetKeyDown(KeyCode.UpArrow) || (verticalRotateInput < 0 && beforeTrigger == 0f)){
+      if(verticalRotationIndex < 3){
+        cameraTrans.RotateAround(playerPos, cameraTrans.right, Mathf.Abs(verticalRotation[++verticalRotationIndex] - cameraTrans.eulerAngles.x));
+      }
+    }else if(Input.GetKeyDown(KeyCode.DownArrow) || (verticalRotateInput > 0 && beforeTrigger == 0f)){
+      if(verticalRotationIndex > 0){
+        cameraTrans.RotateAround(playerPos, cameraTrans.right, -Mathf.Abs(verticalRotation[--verticalRotationIndex] - cameraTrans.eulerAngles.x));
+      }
+    }
+    beforeTrigger = verticalRotateInput;
   }
 }
