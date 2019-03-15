@@ -819,7 +819,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dcf2f2d5044d4a1f97d0f702e7810ac, type: 3}
   m_Name: 
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e1399ccb895ff145aea32a9d149520d, type: 3}
   m_Name: 
@@ -3298,6 +3298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3.2
   runSpeed: 6.5
+  playerCamera: {fileID: 534669902}
 --- !u!4 &2128676285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400204, guid: a67db89bdee18f241927d32f2379ded1,
