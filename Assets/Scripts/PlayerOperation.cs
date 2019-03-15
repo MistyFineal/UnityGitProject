@@ -83,11 +83,11 @@ public class PlayerOperation : MonoBehaviour
         velocity = moveForward;
 
         /*** PlayerRotateBaseCameraスクリプトを有効にするときは以下のif文はコメントアウト  byくそざこひなち ***/
-        /*
+        
         if(moveForward != Vector3.zero){
           transform.rotation = Quaternion.LookRotation(moveForward);
         }
-        */
+
 
         /*** PlayerのanimationStateを決める ***/
         if (velocity.magnitude > 0.01f){
