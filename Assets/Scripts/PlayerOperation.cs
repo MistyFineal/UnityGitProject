@@ -22,8 +22,8 @@ public class PlayerOperation : MonoBehaviour
   // wire
   private bool isWireMode = false;
   private bool isWireAction = false;
-  PlayerWireAction wireScript;
-  CameraChange cameraChangeScript;
+  private PlayerWireAction wireScript;
+  private CameraChange cameraChangeScript;
   private Vector3 moveDirection;
   private Vector3 movePoint;
 
@@ -150,5 +150,16 @@ public class PlayerOperation : MonoBehaviour
 
       public bool IsWireAction(){
         return isWireAction;
+      }
+
+      public void ReceivedDamage(){
+        // ダメージのアニメーションに遷移
+        // のけぞり等で ダメージを受けた後の座標を考慮
+        // 他の処理はPlayerReaction.csに任せる
+        Debug.Log("<color=red>DAMAGE!!</color>");
+      }
+
+      public void TellTheDeath(){ // 関数名はまぁ...
+        // SendMessageか何かで 死を告げられる
       }
     }
