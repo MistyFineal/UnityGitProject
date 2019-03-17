@@ -1,0 +1,86 @@
+実装案件
+🌟：Priority 高
+・：Priority 低
+⭕️：済
+その他
+🐙：バグ
+🐧：改善
+✏️：メモ
+
+*******************
+***** SCRIPTS *****
+
+>> PlayerCamera ----------------------------------------------------------------
+✏️カメラ拡縮
+
+
+>> PlayerOperation -------------------------------------------------------------
+🐧jump_idlingのアニメーション、もっといいやつないかなー
+
+🌟落下中のアニメーション
+・WireActionのターゲット地点への到着判定 & カメラの画角再考
+・WireAction中に、なにか レーザーかロープみたいなものを出したい（ターゲット地点に向けて）
+・WireActionでターゲット地点に到着したあと、その場で着地するまで 入力を受け付けないようにしたい
+  →とりあえず仕様ってことにしとく
+🌟WireAction後のカメラの向きが WireModeに入る前の向きだから 操作しにくい
+・Jump/Air中はWireMode(□)に移行できないようにしたい
+ （別にWireActionできるわけじゃないからこのままでもいいけど）
+
+✏️攻撃Actionについては何もしてないけど、○ボタンで攻撃のつもり
+🐙へたな操作をした時に、IdleのJumpモーションで移動をしてしまう
+
+>> PlayerWireAction ------------------------------------------------------------
+
+>> WireCamera ------------------------------------------------------------------
+🐧みるからにきたないコード修正
+
+
+************************
+***** KEY SETTINGS *****
+□ : button 0 = WireMode
+× : button 1 = Jump
+○ : button 2 = Ok
+△ : button 3 =
+R1: button 5 = Run
+
+カメラ
+← : Axis7 negative = CameraHorizontal
+↓ : Axis8 positive = CameraVertical
+→ : Axis7 positive = CameraHorizontal
+↑ : Axis8 negative = CameraVertical
+
+**********************
+***** ANIMATIONS *****
+Idle : HumanoidIdle(SciFi Robots)
+Walk : HumanoidWalk(SciFi Robots)
+Run : HumanoidRun(SciFi Robots)
+Air : HumanoidFall(SciFi Robots)
+Jump : UMATOBI00(unity-chan!)
+Jump_Idling : standing_jump
+Jump_Running : JUMP00(unity-chan!)
+Attack_Walking :
+Attack_Idling :
+Attack_Running :
+Damage_Reaction_1 :
+Damage_Reaction_2 :
+Die :
+
+
+****************
+***** TAGS *****
+MainCamera : カメラ用（通常のMainCameraだけではなく、WireModeカメラにも使われている）
+Player : Playerのみに使用可
+Enemy :
+SearchArea : EnemyのPlayer探知に関するTag
+AttackArea : EnemyがPlayerにダメージを与えられる領域
+DamageArea : PlayerがEnemyにダメージを与えられる領域
+MovePoint : Enemyの徘徊ルートに関するTag
+CollectionItem : ちくわ
+StickableObject : WireAction可能なオブジェクト
+                  (壁も床も同一のオブジェクトで、設定が面倒なので今は梨)
+
+
+******************
+***** LAYERS *****
+PostProcessing :
+Field : Enemyの感知に関する「壁」
