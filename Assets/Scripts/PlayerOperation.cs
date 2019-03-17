@@ -159,7 +159,7 @@ public class PlayerOperation : MonoBehaviour
         Debug.Log("<color=red>DAMAGE!!</color>");
       }
 
-      public void TellTheDeath(){ // 関数名はまぁ...
-        // SendMessageか何かで 死を告げられる
+      public void TellTheDeath(){
+        Debug.Log("やられた...");
       }
     }
