@@ -134,6 +134,7 @@ public class PlayerOperation : MonoBehaviour
         //Debug.Log("WIRE ACTION");
         this.transform.position = Vector3.MoveTowards(this.transform.position, movePoint, Time.deltaTime * wireScript.moveSpeed);
         if(this.transform.position == movePoint){ // 到着判定が危なそう & 移動中 wireCameraの操作できなくしたい
+          wireScript.DestroyWire();
           isWireAction = false;
           SetWireMode(false);
           cameraChangeScript.ChangeActiveCamera();

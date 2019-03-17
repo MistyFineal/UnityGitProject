@@ -2674,6 +2674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rockgolem
       objectReference: {fileID: 0}
+    - target: {fileID: 6593006768285279698, guid: 74f1c1039bb96c34dbdfc0ea8f69c3fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6593006768285279709, guid: 74f1c1039bb96c34dbdfc0ea8f69c3fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3854,6 +3859,8 @@ MonoBehaviour:
   rayRange: 9
   moveSpeed: 8.5
   testObj: {fileID: 6331324393255085552, guid: 6b326dca33ce7485183bd566f6568526, type: 3}
+  wirePrefab: {fileID: 203504331069257924, guid: b4bccac9220fa4c14bfc63c2691680f0,
+    type: 3}
   reticleImage: {fileID: 1130887615}
 --- !u!114 &2128676287
 MonoBehaviour:

@@ -11,6 +11,8 @@ public class PlayerWireAction : MonoBehaviour
   private Vector3 velocity;
   public float moveSpeed = 8.5f; // 移動速度
   [SerializeField] private GameObject testObj;
+  [SerializeField] private GameObject wirePrefab;
+  private GameObject wire;
   [SerializeField] private GameObject reticleImage;
   private Vector3 moveDirection; // Wire方向のベクトル
 
@@ -31,16 +33,22 @@ public class PlayerWireAction : MonoBehaviour
         targetPosition = hit.point;
         _movePoint = targetPosition;
         // デバッグ用
-        GameObject testObj = Instantiate(this.testObj, targetPosition, Quaternion.identity);
-        Destroy(testObj, 5f);
-        Debug.DrawRay(ray.origin, ray.direction * rayRange, Color.red, 3, false);
+        //GameObject testObj = (GameObject)Instantiate(this.testObj, targetPosition, Quaternion.identity);
+        //Destroy(testObj, 5f);
+        //Debug.DrawRay(ray.origin, ray.direction * rayRange, Color.red, 3, false);
         moveDirection = targetPosition - this.transform.position;
-        //Debug.Log("WIRE-" + moveDirection);
+        wire = (GameObject)Instantiate(wirePrefab, (targetPosition + transform.position) / 2, Quaternion.FromToRotation(Vector3.up, moveDirection));
+        wire.transform.localScale = new Vector3(wire.transform.localScale.x, moveDirection.magnitude / 2, wire.transform.localScale.z);
         reticleImage.SetActive(false);
         return moveDirection;
       }
     }
 
     return Vector3.zero;
+  }
+
+  public void DestroyWire(){
+    if(wire != null)
+      Destroy(wire);
   }
 }
